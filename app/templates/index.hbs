@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Movie Finder</h1>
+        <p>Find the latest movie ratings and more!</p>
+        <div class="container ">
+            <form class="navbar-form" role="search">
+                <div class="input-group add-on">
+                    <Input class="form-control" placeholder="Search" type="text" @id= "search" @value={{this.search}}/>
+                    <div class="input-group-btn">
+                        <button  class="btn btn-default" type="submit"  {{action 'submit' this.search}}><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive">
+        <table summary="This table shows movies" class="table table-bordered table-hover">
+             
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+              {{#each this.model as |movie|}}
+            <tr>  
+              <td> {{#link-to @route "details" @model movie.id }}{{movie.Title}}{{/link-to}}</td>
+              <td> {{movie.Year}}</td>
+              <td> {{movie.Type}}</td>
+            </tr> 
+                {{/each}}
+          </tbody>
+           
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="pagination">
+  <li><a {{action 'changePage' 1}}href="#">1</a></li>
+  <li><a {{action 'changePage' 2}}href="#">2</a></li>
+  <li><a {{action 'changePage' 3}}href="#">3</a></li>
+  <li><a {{action 'changePage' 4}}href="#">4</a></li>
+  <li><a {{action 'changePage' 5}}href="#">5</a></li>
+</ul>
+
+
+
+    
